@@ -11,11 +11,11 @@ const Navbar = () => {
     };
     const menuItems =
         <>
-            <li><Link to='/'>Home</Link></li>
             <li><Link to='/tools'>Tools</Link></li>
             <li><Link to='/business'>Business Summary</Link></li>
             <li><Link to='/reviews'>Reviews</Link></li>
             <li><Link to='/myPortfolio'>My Portfolio</Link></li>
+            <li><Link to='/blogs'>Blogs</Link></li>
             {
                 user && <li><Link to='/dashboard'>Dashboard</Link></li>
             }
@@ -32,7 +32,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Thor Manufacturer</a>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Thor Manufacturer</Link>
             </div>
             <div className="navbar-center hidden lg:flex ">
                 <ul className="menu menu-horizontal p-0 ">
