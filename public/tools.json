@@ -1,0 +1,56 @@
+[
+    {
+        "id": "1",
+        "name": "Archimedes",
+        "des": "Trusted..Their products are authentic",
+        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "min_ord": 50,
+        "stock": 100,
+        "price": 500
+    },
+    {
+        "id": "2",
+        "name": "Archimedes",
+        "des": "Trusted..Their products are authentic",
+        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "min_ord": 50,
+        "stock": 100,
+        "price": 500
+    },
+    {
+        "id": "3",
+        "name": "Archimedes",
+        "des": "Trusted..Their products are authentic",
+        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "min_ord": 50,
+        "stock": 100,
+        "price": 500
+    },
+    {
+        "id": "4",
+        "name": "Archimedes",
+        "des": "Trusted..Their products are authentic",
+        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "min_ord": 50,
+        "stock": 100,
+        "price": 500
+    },
+    {
+        "id": "5",
+        "name": "Archimedes",
+        "des": "Trusted..Their products are authentic",
+        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "min_ord": 50,
+        "stock": 100,
+        "price": 500
+    },
+    {
+        "id": "6",
+        "name": "Archimedes",
+        "des": "Trusted..Their products are authentic",
+        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "min_ord": 50,
+        "stock": 100,
+        "price": 500
+    }
+]
