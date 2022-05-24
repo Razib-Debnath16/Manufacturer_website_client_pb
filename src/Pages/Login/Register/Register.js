@@ -1,38 +1,41 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useForm } from 'react-hook-form';
+import { useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import google from '../../../Assets/Images/Logo/google.png';
 import github from '../../../Assets/Images/Logo/GitHub-Mark.png';
+import { useForm } from 'react-hook-form';
 
-const Login = () => {
+const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const location = useLocation();
-    const navigate = useNavigate();
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
     let signInError;
-    if (error || gError || gitError) {
+    if (error || gError || UpdateError || gitError) {
         signInError = <p className='text-red-500'><small>{error?.message}{gError?.message}</small></p>
     }
-    if (loading || gLoading || gitLoading) {
+    if (loading || gLoading || gitLoading || updating) {
         return <Loading></Loading>;
     }
     let from = location.state?.from?.pathname || "/";
-    if (user || gUser || gitUser) {
+    if (gUser || gitUser) {
         navigate(from, { replace: true });
     }
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password);
-
+    const onSubmit = async data => {
+        console.log(data);
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+        navigate('/')
     };
     const googleSubmit = data => {
         signInWithGoogle(data.email, data.password);
@@ -44,8 +47,23 @@ const Login = () => {
         <div className="flex items-center justify-center">
             <div className='card w-96 bg-base-100 shadow-xl'>
                 <div className="card-body">
-                    <h2 className=" text-center text-3xl font-bold">Login</h2>
+                    <h2 className=" text-center text-3xl font-bold">Register</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input {...register("name", {
+                                required: {
+                                    value: true,
+                                    message: 'Name is Required'
+                                },
+                            })}
+                                type="text" placeholder="Your Name" className="input input-bordered w-full max-w-xs" />
+                            <label className="label">
+                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                            </label>
+                        </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -64,7 +82,6 @@ const Login = () => {
                             <label className="label">
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -89,17 +106,16 @@ const Login = () => {
                             </label>
                         </div>
                         {signInError}
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
+                        <input className='btn w-full max-w-xs text-white' type="submit" value="Register" />
                     </form>
-                    <p>New to Thor Computer Mfr.? <Link className='text-primary' to="/register">Please Register</Link> </p>
+                    <p>Already have an account? <Link className='text-primary' to="/login">Please Login</Link> </p>
                     <div className="divider">OR</div>
                     <button onClick={googleSubmit} className="btn btn-secondary"><img className='px-2' src={google} alt="" /> Continue with Google </button>
                     <button onClick={githubSubmit} className="btn btn-secondary"><img className='px-2' src={github} alt="" /> Continue with GitHub</button>
-
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;
