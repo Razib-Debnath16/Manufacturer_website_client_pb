@@ -4,10 +4,10 @@ import Loading from '../../Shared/Loading/Loading';
 import UserTable from './UserTable/UserTable';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: 'GET',
         headers: {
-            "authorization": `Bearer ${localStorage.getItem('AccessToken')}`
+            authorization: `Bearer ${localStorage.getItem('AccessToken')}`
         }
     }).then(res => res.json()))
     if (isLoading) {
@@ -22,7 +22,6 @@ const MakeAdmin = () => {
                     <thead>
                         <tr>
                             <th>Index</th>
-                            <th>Name</th>
                             <th>Email</th>
                             <th>Make Admin</th>
                         </tr>
@@ -33,6 +32,7 @@ const MakeAdmin = () => {
                                 key={user._id}
                                 user={user}
                                 index={index + 1}
+                                refetch={refetch}
                             ></UserTable>)
                         }
                     </tbody>
