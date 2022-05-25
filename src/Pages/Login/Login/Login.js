@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import google from '../../../Assets/Images/Logo/google.png';
 import github from '../../../Assets/Images/Logo/GitHub-Mark.png';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -19,6 +20,13 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
+    const [token] = useToken(user || gUser || gitUser);
+    let from = location.state?.from?.pathname || "/";
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [user, gUser, gitUser, from])
     let signInError;
     if (error || gError || gitError) {
         signInError = <p className='text-red-500'><small>{error?.message}{gError?.message}</small></p>
@@ -26,10 +34,7 @@ const Login = () => {
     if (loading || gLoading || gitLoading) {
         return <Loading></Loading>;
     }
-    let from = location.state?.from?.pathname || "/";
-    if (user || gUser || gitUser) {
-        navigate(from, { replace: true });
-    }
+
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
 

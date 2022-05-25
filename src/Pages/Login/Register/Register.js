@@ -6,6 +6,7 @@ import Loading from '../../Shared/Loading/Loading';
 import google from '../../../Assets/Images/Logo/google.png';
 import github from '../../../Assets/Images/Logo/GitHub-Mark.png';
 import { useForm } from 'react-hook-form';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -20,6 +21,7 @@ const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
+    const [token] = useToken(user || gUser || gitUser);
     let signInError;
     if (error || gError || UpdateError || gitError) {
         signInError = <p className='text-red-500'><small>{error?.message}{gError?.message}</small></p>
@@ -28,7 +30,7 @@ const Register = () => {
         return <Loading></Loading>;
     }
     let from = location.state?.from?.pathname || "/";
-    if (gUser || gitUser) {
+    if (token) {
         navigate(from, { replace: true });
     }
     const onSubmit = async data => {
