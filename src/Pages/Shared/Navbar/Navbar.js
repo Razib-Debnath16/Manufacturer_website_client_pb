@@ -12,7 +12,7 @@ const Navbar = () => {
     };
     const menuItems =
         <>
-            <li><Link to='/alltools'>Tools</Link></li>
+            <li><Link to='/allTools'>Tools</Link></li>
             <li><Link to='/business'>Business Summary</Link></li>
             <li><Link to='/allReviews'>Reviews</Link></li>
             <li><Link to='/myPortfolio'>My Portfolio</Link></li>
