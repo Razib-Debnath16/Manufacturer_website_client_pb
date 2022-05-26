@@ -1,10 +1,15 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 const CheckoutForm = ({ order }) => {
+    const [loading] = useAuthState(auth);
     const [error, setCardError] = useState('');
     const [success, setSuccess] = useState('');
-    const { price, email } = order;
+    const [transactionId, setTransactionId] = useState('');
+    const { _id, price, email } = order;
     const [clientSecret, setClientSecret] = useState('');
     const stripe = useStripe();
     const elements = useElements();
@@ -12,8 +17,7 @@ const CheckoutForm = ({ order }) => {
         fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('AccessToken')}`
+                'content-type': 'application/json'
             },
             body: JSON.stringify({ price })
         })
@@ -24,9 +28,10 @@ const CheckoutForm = ({ order }) => {
                     setClientSecret(data?.clientSecret);
                 }
             })
-    }, [])
-    const handleSubmit = async event => {
+    }, [price])
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
         if (!stripe || !elements) {
             return;
         }
@@ -59,8 +64,22 @@ const CheckoutForm = ({ order }) => {
         }
         else {
             setSuccess('Congrats...Your Payment is successful');
-
+            setTransactionId(paymentIntent.id);
+            console.log(paymentIntent);
             setCardError('');
+            const payment = {
+                transactionId: paymentIntent.id,
+                partsId: _id
+            }
+            fetch(`http://localhost:5000/orders/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
         }
     }
     return (
@@ -86,12 +105,17 @@ const CheckoutForm = ({ order }) => {
                     Pay
                 </button>
             </form>
-            {
-                error && <p className='text-red-500'>{error}</p>
-            }
-            {
-                success && <p className='text-green-500'>{success}</p>
-            }
+            <div className='p-6'>
+                {
+                    error && <p className='text-red-500'>{error}</p>
+                }
+                {
+                    success && <div>
+                        <p className='text-green-500'>{success}</p>
+                        <p className='text-yellow-500 text-2xl'>{transactionId}</p>
+                    </div>
+                }
+            </div>
         </>
     );
 };

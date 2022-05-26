@@ -16,7 +16,6 @@ const Payment = () => {
             .then(data => {
                 setOrder(...data);
                 console.log(order);
-
             })
     }, [id])
     // const { data, isLoading } = useQuery(['order', id], fetch(url).then(res => res.json()))
