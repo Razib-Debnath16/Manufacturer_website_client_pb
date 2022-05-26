@@ -20,6 +20,7 @@ const AddProduct = () => {
             quantity: quantity,
             stock: stock,
             price: price,
+            email: email
 
         }
         fetch('http://localhost:5000/tools', {
