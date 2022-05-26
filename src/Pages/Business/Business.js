@@ -9,39 +9,39 @@ const Business = () => {
         <div>
             <h1 className='text-center text-primary uppercase text-4xl mb-2'>Millions Company Trust us</h1>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-center'>
-                <div class="card bg-base-100 shadow-xl">
-                    <figure class="px-10 pt-10">
-                        <img src={country} alt="Shoes" class="rounded-xl" />
+                <div className="card bg-base-100 shadow-xl">
+                    <figure className="px-10 pt-10">
+                        <img src={country} alt="Shoes" className="rounded-xl" />
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title text-primary text-3xl ">100+</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title text-primary text-3xl ">100+</h2>
                         <h3 className='text-3xl'>Countries</h3>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl">
-                    <figure class="px-10 pt-10">
-                        <img src={items} alt="Shoes" class="rounded-xl" />
+                <div className="card bg-base-100 shadow-xl">
+                    <figure className="px-10 pt-10">
+                        <img src={items} alt="Shoes" className="rounded-xl" />
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title text-primary text-3xl">200+</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title text-primary text-3xl">200+</h2>
                         <h3 className='text-3xl'>Products</h3>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl">
-                    <figure class="px-10 pt-10">
-                        <img src={clients} alt="Shoes" class="rounded-xl" />
+                <div className="card bg-base-100 shadow-xl">
+                    <figure className="px-10 pt-10">
+                        <img src={clients} alt="Shoes" className="rounded-xl" />
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title text-primary text-3xl">500+</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title text-primary text-3xl">500+</h2>
                         <h3 className='text-3xl'>Happy Clients</h3>
                     </div>
                 </div>
-                <div class="card bg-base-100 shadow-xl">
-                    <figure class="px-10 pt-10">
-                        <img src={feedback} alt="Shoes" class="rounded-xl" />
+                <div className="card bg-base-100 shadow-xl">
+                    <figure className="px-10 pt-10">
+                        <img src={feedback} alt="Shoes" className="rounded-xl" />
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title text-primary text-3xl">800+</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title text-primary text-3xl">800+</h2>
                         <h3 className='text-3xl'>Feedbacks</h3>
                     </div>
                 </div>

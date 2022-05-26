@@ -23,7 +23,7 @@ const Login = () => {
     const [token] = useToken(user || gUser || gitUser);
     let from = location.state?.from?.pathname || "/";
     useEffect(() => {
-        if (token) {
+        if (token || user || gUser || gitUser) {
             navigate(from, { replace: true });
         }
     }, [user, gUser, gitUser, from])

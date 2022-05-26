@@ -51,13 +51,13 @@ const Purchase = () => {
 
     }
     return (
-        <div class="hero min-h-screen bg-base-200">
-            <div class="hero-content flex-col lg:flex-row lg:text-center">
+        <div className="hero min-h-screen bg-base-200">
+            <div className="hero-content flex-col lg:flex-row lg:text-center">
                 <div>
-                    <div class="card w-auto bg-base-100 shadow-xl">
+                    <div className="card w-auto bg-base-100 shadow-xl">
                         <figure><img src={product.img} alt="Shoes" /></figure>
-                        <div class="card-body text-left">
-                            <h2 class="card-title">
+                        <div className="card-body text-left">
+                            <h2 className="card-title">
                                 {product.name}
                             </h2>
                             <p>{product.des}</p>
@@ -68,31 +68,31 @@ const Purchase = () => {
                         </div>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit} class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                    <div class="card-body">
-                        <div class="form-control">
+                <form onSubmit={handleSubmit} className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+                    <div className="card-body">
+                        <div className="form-control">
                             <p className='text-left'>Name </p>
-                            <input type="text" disabled placeholder={user?.displayName || user?.name} class="input input-bordered max-w-lg" />
+                            <input type="text" disabled placeholder={user?.displayName || user?.name} className="input input-bordered max-w-lg" />
                         </div>
-                        <div class="form-control">
+                        <div className="form-control">
                             <p className='text-left'>Email </p>
-                            <input type="text" disabled placeholder={user?.email} class="input input-bordered w-full" />
+                            <input type="text" disabled placeholder={user?.email} className="input input-bordered w-full" />
                         </div>
-                        <div class="form-control">
+                        <div className="form-control">
                             <p className='text-left'>Address</p>
-                            <input type="text" name='address' placeholder="Home Address" class="input input-bordered" />
+                            <input type="text" name='address' placeholder="Home Address" className="input input-bordered" />
                         </div>
-                        <div class="form-control">
+                        <div className="form-control">
                             <p className='text-left'>Number</p>
-                            <input type="number" name='phone' placeholder='Your Phone Number' class="input input-bordered" />
+                            <input type="number" name='phone' placeholder='Your Phone Number' className="input input-bordered" />
                         </div>
-                        <div class="form-control">
+                        <div className="form-control">
                             <p className='text-left'>How much quantity you want to buy?</p>
-                            <input type="number" name='quantity' placeholder="Number" class="input input-bordered" />
+                            <input type="number" name='quantity' placeholder="Number" className="input input-bordered" />
                         </div>
 
-                        <div class="form-control mt-6">
-                            <button class="btn btn-primary">Purchase</button>
+                        <div className="form-control mt-6">
+                            <button className="btn btn-primary">Purchase</button>
                         </div>
                     </div>
                 </form>

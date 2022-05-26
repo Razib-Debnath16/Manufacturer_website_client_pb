@@ -17,8 +17,8 @@ const MyOrder = () => {
         navigate(`/dashboard/payment/${id}`);
     }
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-96">
+        <div className="overflow-x-auto">
+            <table className="table w-96">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -34,8 +34,8 @@ const MyOrder = () => {
                             <td>{order.email}</td>
                             <td>{order.price}</td>
                             <td>
-                                {!order.paid && <button onClick={() => handlePay(order._id)} class="btn btn-active btn-secondary">Pay Now</button>}
-                                {order.paid && <span class="btn btn-active btn-success">Paid</span>}
+                                {!order.paid && <button onClick={() => handlePay(order._id)} className="btn btn-active btn-secondary">Pay Now</button>}
+                                {order.paid && <span className="btn btn-active btn-success">Paid</span>}
                             </td>
                         </tr>)
                     }

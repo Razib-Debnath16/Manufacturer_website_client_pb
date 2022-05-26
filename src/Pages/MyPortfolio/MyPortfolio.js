@@ -3,14 +3,14 @@ import React from 'react';
 const MyPortfolio = () => {
     return (
         <div>
-            <div class="card w-full bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title text-2xl">Razib Debnath</h2>
+            <div className="card w-full bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title text-2xl">Razib Debnath</h2>
                     <p className='text-xl '>Email : <span className='text-success'>Razib.debnath016@gmail.com</span> </p>
                     <div>
                         <h2 className='text-center text-3xl text-success'>Educational Background</h2>
-                        <div class="overflow-x-auto">
-                            <table class="table w-full">
+                        <div className="overflow-x-auto">
+                            <table className="table w-full">
                                 <thead>
                                     <tr>
                                         <th>*</th>

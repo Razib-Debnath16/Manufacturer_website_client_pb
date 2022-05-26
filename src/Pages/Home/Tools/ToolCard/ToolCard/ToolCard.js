@@ -8,18 +8,18 @@ const ToolCard = ({ tool }) => {
         navigate(`/purchase/${_id}`);
     }
     return (
-        <div class="card border border-slate-300  bg-base-100 shadow-xl">
-            <figure class="px-10 pt-10">
-                <img src={img} alt="Shoes" class="rounded-xl" />
+        <div className="card border border-slate-300  bg-base-100 shadow-xl">
+            <figure className="px-10 pt-10">
+                <img src={img} alt="Shoes" className="rounded-xl" />
             </figure>
-            <div class="card-body items-center text-center bg-slate-200">
-                <h2 class="card-title">{name}</h2>
+            <div className="card-body items-center text-center bg-slate-200">
+                <h2 className="card-title">{name}</h2>
                 <p>Product Details : {des}</p>
                 <p>Minimum Order Quantity: {min_ord}</p>
                 <p>InStock : {stock}</p>
                 <p>Price : ${price}</p>
-                <div class="card-actions">
-                    <button onClick={() => handleBook(_id)} class="btn btn-primary">Book Now</button>
+                <div className="card-actions">
+                    <button onClick={() => handleBook(_id)} className="btn btn-primary">Book Now</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -9,9 +9,11 @@ const Navbar = () => {
     const logout = () => {
         signOut(auth);
         localStorage.removeItem('AccessToken');
+        Navigate('/');
     };
     const menuItems =
         <>
+            <li><Link to='/'>Home</Link></li>
             <li><Link to='/allTools'>Tools</Link></li>
             <li><Link to='/business'>Business Summary</Link></li>
             <li><Link to='/allReviews'>Reviews</Link></li>
