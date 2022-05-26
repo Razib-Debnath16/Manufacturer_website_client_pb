@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useTools from '../../../../hooks/useTools';
 import ToolCard from '../ToolCard/ToolCard/ToolCard';
 
-const Tools = () => {
+const AllTools = () => {
     const [tools] = useTools();
 
     return (
@@ -11,7 +11,7 @@ const Tools = () => {
             <h2 className='text-center text-secondary text-3xl'>Our Tools</h2>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
                 {
-                    tools.slice(0, 3).map(tool => <ToolCard
+                    tools.map(tool => <ToolCard
                         key={tool._id}
                         tool={tool}
                     ></ToolCard>)
@@ -21,4 +21,4 @@ const Tools = () => {
     );
 };
 
-export default Tools;
+export default AllTools;
