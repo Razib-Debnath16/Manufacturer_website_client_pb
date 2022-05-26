@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
     const { id } = useParams();
     const [product, setProduct] = useState({});
+    const navigate = useNavigate();
     useEffect(() => {
         const url = `http://localhost:5000/tools/${id}`;
         fetch(url, {
@@ -19,7 +20,36 @@ const Purchase = () => {
             .then(data => setProduct(data));
 
     }, [])
-    console.log(user);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const name = product.name;
+        const email = user?.email;
+        const quantity = event.target.quantity.value;
+        const address = event.target.address.value;
+        const phone = event.target.phone.value;
+        const price = parseInt(quantity) * parseInt(product.price);
+        const newStock = parseInt(product.stock) - parseInt(quantity);
+        const data = {
+            name,
+            email,
+            quantity,
+            address,
+            phone,
+            price
+        }
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+
+        navigate(`/dashboard/myOrder`);
+
+    }
     return (
         <div class="hero min-h-screen bg-base-200">
             <div class="hero-content flex-col lg:flex-row lg:text-center">
@@ -38,7 +68,7 @@ const Purchase = () => {
                         </div>
                     </div>
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+                <form onSubmit={handleSubmit} class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
                     <div class="card-body">
                         <div class="form-control">
                             <p className='text-left'>Name </p>
@@ -50,22 +80,22 @@ const Purchase = () => {
                         </div>
                         <div class="form-control">
                             <p className='text-left'>Address</p>
-                            <input type="text" placeholder="Home Address" class="input input-bordered" />
+                            <input type="text" name='address' placeholder="Home Address" class="input input-bordered" />
                         </div>
                         <div class="form-control">
                             <p className='text-left'>Number</p>
-                            <input type="number" placeholder={product.name} class="input input-bordered" />
+                            <input type="number" name='phone' placeholder='Your Phone Number' class="input input-bordered" />
                         </div>
                         <div class="form-control">
                             <p className='text-left'>How much quantity you want to buy?</p>
-                            <input type="number" placeholder="Number" class="input input-bordered" />
+                            <input type="number" name='quantity' placeholder="Number" class="input input-bordered" />
                         </div>
 
                         <div class="form-control mt-6">
                             <button class="btn btn-primary">Purchase</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );
