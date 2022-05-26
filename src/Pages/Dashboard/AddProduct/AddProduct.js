@@ -1,9 +1,12 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const AddProduct = () => {
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
     const email = user.email;
     const handleAddProduct = event => {
         event.preventDefault();
@@ -30,7 +33,14 @@ const AddProduct = () => {
             },
             body: JSON.stringify(tool)
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    navigate('/');
+                }
+
+            })
+
     }
     return (
         <div>
@@ -38,13 +48,13 @@ const AddProduct = () => {
                 <h2 className='text-center text-2xl text-green-500'>Add Product</h2>
                 <form onSubmit={handleAddProduct} className="card-body">
                     <label className="label">
-                        <span className="label-text">Tool name?</span>
+                        <span className="label-text">Product name?</span>
                     </label>
                     <input type="text" name='name' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
                     <label className="label">
-                        <span className="label-text">Your Email</span>
+                        <span className="label-text">Description</span>
                     </label>
-                    <input className='text-xl input input-bordered w-full max-w-xs' name='des' type="text" readOnly placeholder='Type here' />
+                    <input className='text-xl input input-bordered w-full max-w-xs' name='des' type="text" placeholder='Type here' />
                     <label className="label">
                         <span className="label-text">Image URL</span>
                     </label>
@@ -61,6 +71,10 @@ const AddProduct = () => {
                         <span className="label-text">Price</span>
                     </label>
                     <input type="number" name='price' placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <label className="label">
+                        <span className="label-text">Your Email</span>
+                    </label>
+                    <input type="email" name='email' readOnly placeholder={user.email} className="input input-bordered w-full max-w-xs" />
                     <button type='submit' className="btn btn-active">Add Product</button>
                 </form>
             </div>

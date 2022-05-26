@@ -51,7 +51,7 @@ function App() {
         </Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
       </Routes >
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </div >
   );
 }

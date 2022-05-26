@@ -1,9 +1,9 @@
 [
     {
         "id": "1",
-        "name": "Archimedes",
+        "name": "data.deletedCount > 0",
         "des": "Trusted..Their products are authentic",
-        "img": "https://i.ibb.co/syWdKV5/2.jpg",
+        "img": "https://i.ibb.co/8DZwps3/processor.jpg",
         "min_ord": 50,
         "stock": 100,
         "price": 500
