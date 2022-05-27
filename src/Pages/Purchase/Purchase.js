@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { set } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
@@ -7,6 +8,8 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
     const { id } = useParams();
     const [product, setProduct] = useState({});
+    const [error, setError] = useState('');
+    const [value, setValue] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
         const url = `http://localhost:5000/tools/${id}`;
@@ -50,6 +53,20 @@ const Purchase = () => {
         navigate(`/dashboard/myOrder`);
 
     }
+    const handleQuantity = event => {
+        if (parseInt(event.target.value) > parseInt(product.stock)) {
+            setValue(-1);
+            setError("Sorry...We don't have enough stock");
+        }
+        else if (parseInt(event.target.value) < parseInt(product.min_ord)) {
+            setValue(-1);
+            setError(`You have to purchase minimum ${product.min_ord}`);
+        }
+        else {
+            setError('');
+            setValue(0);
+        }
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row lg:text-center">
@@ -88,11 +105,14 @@ const Purchase = () => {
                         </div>
                         <div className="form-control">
                             <p className='text-left'>How much quantity you want to buy?</p>
-                            <input type="number" name='quantity' placeholder="Number" className="input input-bordered" />
+                            <input onChange={handleQuantity} type="number" name='quantity' placeholder="Number" className="input input-bordered" />
+                            <p className={!value === -1 ? 'text-green-500' : 'text-red-500'}>{
+                                error
+                            }</p>
                         </div>
 
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Purchase</button>
+                            <button disabled={value === -1} className="btn btn-primary" type='submit'>Purchase</button>
                         </div>
                     </div>
                 </form>

@@ -7,7 +7,8 @@ import Loading from '../../Shared/Loading/Loading';
 import DeleteModal from './DeleteModal';
 
 const Products = ({ tool }) => {
-    const { _id, img, des, min_ord, stock, price, name } = tool;
+    const { _id, img, des, min_ord, stock, price, name
+    } = tool;
     const [user] = useAuthState(auth);
     const [items, setItems] = useTools();
     const url = `http://localhost:5000/user/email?email=${user.email}`;
@@ -52,7 +53,7 @@ const Products = ({ tool }) => {
                 <div className="card-actions">
                     {
                         admin &&
-                        <label onClick={() => handleDelete(_id)} for="deleteModal" class="btn btn  text-red-500">Delete</label>
+                        <label onClick={() => handleDelete(_id)} for="deleteModal" className="btn btn  text-red-500">Delete</label>
                     }
                 </div>
             </div>

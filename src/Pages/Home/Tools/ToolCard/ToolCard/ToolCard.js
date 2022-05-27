@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ToolCard = ({ tool }) => {
-    const { _id, img, des, min_ord, stock, price, name } = tool;
+    const { _id, img, des, min_ord, stock, price, name
+    } = tool;
     const navigate = useNavigate();
     const handleBook = id => {
         navigate(`/purchase/${_id}`);

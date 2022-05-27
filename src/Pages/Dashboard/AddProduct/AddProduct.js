@@ -44,9 +44,9 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-2xl">
+            <div className="card w-96  bg-base-100 shadow-2xl">
                 <h2 className='text-center text-2xl text-green-500'>Add Product</h2>
-                <form onSubmit={handleAddProduct} className="card-body">
+                <form onSubmit={handleAddProduct} className="card-body lg:max-h-lg">
                     <label className="label">
                         <span className="label-text">Product name?</span>
                     </label>

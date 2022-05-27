@@ -12,13 +12,13 @@ const Dashboard = () => {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* <!-- Page content here --> */}
-                <Outlet></Outlet>
                 <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <Outlet></Outlet>
 
             </div>
             <div className="drawer-side">
                 <label for="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                <ul className="menu  overflow-y-auto w-full bg-base-100 text-base-content">
 
                     {<li><Link className='text-teal-500 text-2xl' to="/dashboard">My Profile</Link></li>}
                     {!admin && <li><Link to="/dashboard/addReview" className='text-teal-500 text-2xl'>Add a Review</Link></li>}

@@ -101,7 +101,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button onClick={handleSubmit} type="submit" className='btn btn-secondary btn-sm m-6' disabled={!stripe}>
+                <button onClick={handleSubmit} type="submit" className='btn btn-secondary btn-sm m-6' disabled={!stripe || clientSecret}>
                     Pay
                 </button>
             </form>
