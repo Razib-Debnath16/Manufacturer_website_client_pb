@@ -24,6 +24,7 @@ import Reviews from './Pages/Reviews/Reviews/Reviews';
 import AllTools from './Pages/Home/Tools/AllTools/AllTools';
 import Business from './Pages/Business/Business';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/allReviews' element={<AllReviews></AllReviews>}></Route>
         <Route path='/business' element={<Business></Business>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>

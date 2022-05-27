@@ -37,7 +37,7 @@ const Register = () => {
         console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        navigate('/')
+        navigate('/login');
     };
     const googleSubmit = data => {
         signInWithGoogle(data.email, data.password);

@@ -34,7 +34,6 @@ const AddProduct = () => {
             body: JSON.stringify(tool)
         }).then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     navigate('/');
                 }
@@ -46,7 +45,7 @@ const AddProduct = () => {
         <div>
             <div className="card w-96  bg-base-100 shadow-2xl">
                 <h2 className='text-center text-2xl text-green-500'>Add Product</h2>
-                <form onSubmit={handleAddProduct} className="card-body lg:max-h-lg">
+                <form onSubmit={handleAddProduct} className="card-body lg:max-h-screen">
                     <label className="label">
                         <span className="label-text">Product name?</span>
                     </label>

@@ -26,7 +26,6 @@ const ShowAllOrders = ({ order, index, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 refetch();
-                console.log(data)
             })
         if (loading) {
             return <Loading></Loading>
@@ -55,13 +54,13 @@ const ShowAllOrders = ({ order, index, refetch }) => {
             <th>{index}</th>
             <td>{email}</td>
             <td>{price}</td>
-            <td>{<button class={paymentStatus === 'Paid' ? 'btn btn-success' : 'btn btn-warning'}>{paymentStatus}</button>}</td>
+            <td>{<button className={paymentStatus === 'Paid' ? 'btn btn-success' : 'btn btn-warning'}>{paymentStatus}</button>}</td>
             <td className={status === 'Shipped' ? 'text-success' : 'text-yellow-500'}>{status}{!status && '--------'}</td>
             <td>{
-                paid && status === 'pending' && <button onClick={() => handleShipped(_id)} class="btn btn-success">Shipped</button>
+                paid && status === 'pending' && <button onClick={() => handleShipped(_id)} className="btn btn-success">Ship Now</button>
             }
                 {
-                    !paid && <button onClick={() => handleDeleteOrder(_id)} class="btn btn-error btn-md">Delete Order</button>
+                    !paid && <button onClick={() => handleDeleteOrder(_id)} className="btn btn-error btn-md">Delete Order</button>
                 }
             </td>
         </tr>
