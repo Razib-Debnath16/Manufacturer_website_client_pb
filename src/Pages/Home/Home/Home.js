@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePay from '../../Dashboard/Payment/HomePay/HomePay';
 import Reviews from '../../Reviews/Reviews/Reviews';
 import Footer from '../../Shared/Footer/Footer';
 import Banner from '../Banner/Banner';
@@ -10,6 +11,7 @@ const Home = () => {
         <div className='px-2'>
             <Banner></Banner>
             <Tools></Tools>
+            <HomePay></HomePay>
             <Reviews></Reviews>
             <Footer></Footer>
         </div>
