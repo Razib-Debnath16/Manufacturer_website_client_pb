@@ -26,7 +26,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * if user is login then only can see the dashboard.
 * we have register and login section.
 
-### Technology Used (Server Side)
+### Technology Used (Client Side)
 
 * React router
 * Tailwind
@@ -39,7 +39,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Daisy 
 * React Query
 
-### Technology Used (Client Side)
+### Technology Used (Server Side)
 
 * Express
 * dotenv
