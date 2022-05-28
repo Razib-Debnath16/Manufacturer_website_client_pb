@@ -18,7 +18,7 @@ const MyProfile = () => {
             location: location,
             linkedin: linkedin
         }
-        fetch('http://localhost:5000/profile', {
+        fetch('https://enigmatic-shelf-24691.herokuapp.com/profile', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

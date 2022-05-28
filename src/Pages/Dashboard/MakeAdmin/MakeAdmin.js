@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import UserTable from './UserTable/UserTable';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://enigmatic-shelf-24691.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('AccessToken')}`

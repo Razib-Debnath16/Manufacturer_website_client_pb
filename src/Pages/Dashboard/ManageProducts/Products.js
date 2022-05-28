@@ -11,8 +11,8 @@ const Products = ({ tool }) => {
     } = tool;
     const [user] = useAuthState(auth);
     const [items, setItems] = useTools();
-    const url = `http://localhost:5000/user/email?email=${user.email}`;
-    const { data, isLoading } = useQuery('user', () => fetch(`http://localhost:5000/user/email?email=${user.email}`).then(res => res.json()))
+    const url = `https://enigmatic-shelf-24691.herokuapp.com/user/email?email=${user.email}`;
+    const { data, isLoading } = useQuery('user', () => fetch(`https://enigmatic-shelf-24691.herokuapp.com/user/email?email=${user.email}`).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -21,7 +21,7 @@ const Products = ({ tool }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            fetch(`http://localhost:5000/tools/${id}`, {
+            fetch(`https://enigmatic-shelf-24691.herokuapp.com/tools/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'

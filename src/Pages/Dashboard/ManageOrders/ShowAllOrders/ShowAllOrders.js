@@ -16,7 +16,7 @@ const ShowAllOrders = ({ order, index, refetch }) => {
     }
 
     const handleShipped = id => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://enigmatic-shelf-24691.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -33,7 +33,7 @@ const ShowAllOrders = ({ order, index, refetch }) => {
 
     }
     const handleDeleteOrder = id => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://enigmatic-shelf-24691.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

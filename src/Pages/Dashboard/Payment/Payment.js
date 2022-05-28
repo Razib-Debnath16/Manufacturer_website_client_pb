@@ -8,7 +8,7 @@ import CheckoutForm from '../../Payment/CheckoutForm/CheckoutForm';
 const Payment = () => {
     const stripePromise = loadStripe('pk_test_51L3ImtEY9coFqB6FxX4BUXdUS3psEIueZmOBOdTvDxjNQEX5zqnJfOYXN5AOumxNp5IsG499eZIY47CLBfjYhvw800fE3riluU');
     const { id } = useParams();
-    const url = `http://localhost:5000/orders/${id}`;
+    const url = `https://enigmatic-shelf-24691.herokuapp.com/orders/${id}`;
     const [order, setOrder] = useState({});
     useEffect(() => {
         fetch(url)

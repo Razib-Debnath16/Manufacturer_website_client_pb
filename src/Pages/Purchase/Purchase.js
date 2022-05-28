@@ -3,16 +3,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { set } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 
 const Purchase = () => {
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [error, setError] = useState('');
     const [value, setValue] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${id}`;
+        const url = `https://enigmatic-shelf-24691.herokuapp.com/tools/${id}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -40,7 +41,7 @@ const Purchase = () => {
             phone,
             price
         }
-        fetch('http://localhost:5000/orders', {
+        fetch('https://enigmatic-shelf-24691.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -48,9 +49,13 @@ const Purchase = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => console.log(data));
-
+            .then(data => {
+                console.log(data);
+            });
         navigate(`/dashboard/myOrder`);
+
+
+
 
     }
     const handleQuantity = event => {

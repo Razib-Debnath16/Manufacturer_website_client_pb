@@ -3,7 +3,7 @@ import Loading from '../../Shared/Loading/Loading';
 import ShowAllOrders from './ShowAllOrders/ShowAllOrders';
 
 const ManageOrders = () => {
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/orders').then(res => res.json()));
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://enigmatic-shelf-24691.herokuapp.com/orders').then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }

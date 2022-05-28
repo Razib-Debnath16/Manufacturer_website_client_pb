@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
     const stripe = useStripe();
     const elements = useElements();
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://enigmatic-shelf-24691.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +71,7 @@ const CheckoutForm = ({ order }) => {
                 transactionId: paymentIntent.id,
                 partsId: _id
             }
-            fetch(`http://localhost:5000/orders/${_id}`, {
+            fetch(`https://enigmatic-shelf-24691.herokuapp.com/orders/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'
@@ -101,7 +101,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button onClick={handleSubmit} type="submit" className='btn btn-secondary btn-sm m-6' disabled={!stripe}>
+                <button onClick={handleSubmit} type="submit" className='btn btn-secondary btn-sm m-6' disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>

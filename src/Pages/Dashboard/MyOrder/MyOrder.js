@@ -9,7 +9,7 @@ import Order from './Order/Order';
 const MyOrder = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { data: orders, isLoading } = useQuery('orders', () => fetch(`http://localhost:5000/orders/email?email=${user?.email}`).then(res => res.json()))
+    const { data: orders, isLoading } = useQuery('orders', () => fetch(`https://enigmatic-shelf-24691.herokuapp.com/orders/email?email=${user?.email}`).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
