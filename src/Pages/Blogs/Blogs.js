@@ -33,7 +33,7 @@ const Blogs = () => {
                 </div>
 
             </div >
-            <h3 className='text-success mb-2 ms-3 '>Q3) How does prototypical inheritance work?</h3>
+            <h3 className='text-success mb-2 ms-3 text-2xl'>Q3) How does prototypical inheritance work?</h3>
             <div className='question-2 ms-3'>
                 The Prototypal Inheritance is a feature in JavaScript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.getPrototypeOf and Object.
             </div>

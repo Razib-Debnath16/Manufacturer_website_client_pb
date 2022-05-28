@@ -25,6 +25,7 @@ import AllTools from './Pages/Home/Tools/AllTools/AllTools';
 import Business from './Pages/Business/Business';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Blogs from './Pages/Blogs/Blogs';
+import Notfound from './Pages/Shared/NotFound/Notfound';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path='/dashboard/manageProducts' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
         </Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes >
       {/* <ToastContainer /> */}
     </div >
