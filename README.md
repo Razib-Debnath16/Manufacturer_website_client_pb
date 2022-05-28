@@ -2,11 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-### Live Website Link 
-
-()
 
 ### Website Name
 
@@ -47,6 +42,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * jwt
 * stripe
 
+## Available Scripts
 In the project directory, you can run:
 
 ### `npm start`
